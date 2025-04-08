@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Warenkorb</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background: linear-gradient(to right, #c89494, #e2bcbc);
+      position: relative;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-icon {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .header h1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 999;
+    }
+
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+      display: block;
+      font-size: 18px;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .cart-icon {
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .cart-container {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: auto;
+      border-radius: 8px;
+      margin-right: 10px;
+    }
+
+    .cart-item span {
+      flex: 1;
+    }
+
+    .cart-item button {
+      background-color: #c89494;
+      border: none;
+      padding: 8px 12px;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cart-item button:hover {
+      background-color: #a87171;
+    }
+
+    .cart-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .cart-actions button {
+      background-color: #e2bcbc;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 0 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .cart-actions button:hover {
+      background-color: #d1a8a8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeNav()">×</span>
+    <a href="index.html#muetze">Mütze</a>
+    <a href="index.html#tshirt">T-Shirt</a>
+    <a href="index.html#hose">Hose</a>
+    <a href="index.html#schuhe">Schuhe</a>
+    <a href="index.html#schmuck">Schmuck</a>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <h1>MyShop</h1>
+    <div style="display: flex; align-items: center;">
+      <a href="builder.html">
+        <img src="DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+      </a>
+      <a href="warenkorb.html">
+        <img src="Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+      </a>
+    </div>
+  </div>
+
+  <!-- Warenkorb -->
+  <h2>Dein Warenkorb</h2>
+  <div class="cart-container" id="cart-items">
+    <p>Warenkorb ist leer.</p>
+  </div>
+
+  <div class="cart-actions">
+    <button onclick="clearCart()">Warenkorb leeren</button>
+    <button onclick="checkout()">Zur Kasse</button>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+
+    function loadCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let cartContainer = document.getElementById("cart-items");
+      cartContainer.innerHTML = "";
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Warenkorb ist leer.</p>";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        let div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <span>${item.name} - Größe: ${item.size}</span>
+          <button onclick="removeFromCart(${index})">Entfernen</button>
+        `;
+        cartContainer.appendChild(div);
+      });
+    }
+
+    function removeFromCart(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      loadCart();
+    }
+
+    function checkout() {
+      alert("Weiter zur Kasse (noch nicht implementiert)");
+    }
+
+    window.onload = loadCart;
+  </script>
+</body>
+</html>

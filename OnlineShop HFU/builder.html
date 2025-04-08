@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Outfit-Builder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background: linear-gradient(to right, #c89494, #e2bcbc);
+      position: relative;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-icon {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .header h1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+    }
+
+    .cart-icon {
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 999;
+    }
+
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+      display: block;
+      font-size: 18px;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Builder Content */
+    .builder-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 20px;
+    }
+
+    .mannequin-container {
+      position: relative;
+      width: 300px;
+      height: 600px;
+      background-image: url('angepasste puppe.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background-color: white;
+    }
+
+    .clothing-zone {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    #shirt-zone {
+      top: 120px;
+      width: 100%;
+      height: 150px;
+    }
+
+    #pants-zone {
+      top: 270px;
+      width: 100%;
+      height: 180px;
+    }
+
+    #shoes-zone {
+      top: 450px;
+      width: 100%;
+      height: 100px;
+    }
+
+    .clothing-options {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .clothing-options img {
+      width: 100px;
+      cursor: grab;
+      border: 1px solid #aaa;
+      padding: 4px;
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeNav()">×</span>
+    <a href="index.html#muetze">Mütze</a>
+    <a href="index.html#tshirt">T-Shirt</a>
+    <a href="index.html#hose">Hose</a>
+    <a href="index.html#schuhe">Schuhe</a>
+    <a href="index.html#schmuck">Schmuck</a>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <h1>MyShop</h1>
+    <div style="display: flex; align-items: center;">
+      <a href="builder.html">
+        <img src="DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+      </a>
+      <a href="warenkorb.html">
+        <img src="Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+      </a>
+    </div>
+  </div>
+
+  <!-- Builder Content -->
+  <h2 style="text-align:center; margin-top: 30px;">Outfit-Builder</h2>
+  <div class="builder-wrapper">
+    <!-- Kleidungsauswahl -->
+    <div class="clothing-options">
+      <img src="angepasstes Tshirt.png" draggable="true" ondragstart="drag(event)" id="tshirt" alt="T-Shirt">
+      <img src="angepasste hose.png" draggable="true" ondragstart="drag(event)" id="pants" alt="Hose">
+      <img src="angepasste schuhe.png" draggable="true" ondragstart="drag(event)" id="shoes" alt="Schuhe">
+    </div>
+
+    <!-- Puppe mit Dropzonen -->
+    <div class="mannequin-container">
+      <div class="clothing-zone" id="shirt-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="clothing-zone" id="pants-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="clothing-zone" id="shoes-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("type", ev.target.id);
+      ev.dataTransfer.setData("src", ev.target.src);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      const type = ev.dataTransfer.getData("type");
+      const src = ev.dataTransfer.getData("src");
+
+      let zoneId = "";
+      if (type === "tshirt") zoneId = "shirt-zone";
+      else if (type === "pants") zoneId = "pants-zone";
+      else if (type === "shoes") zoneId = "shoes-zone";
+
+      if (zoneId) {
+        const zone = document.getElementById(zoneId);
+        zone.innerHTML = `<img src="${src}" style="width: 80%; position: absolute; top: 0; left: 10%;">`;
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OnlineShop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background: linear-gradient(to right, #c89494, #e2bcbc);
+      position: relative;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-icon {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .header h1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 999;
+    }
+
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+      display: block;
+      font-size: 18px;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      background: linear-gradient(to right, #ffffff, #f2f2f2);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    input {
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .cart-icon {
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .titelbild-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0; /* Keine Ränder, damit es bis zum Rand geht */
+      padding: 0; /* Keine Polsterung */
+      width: 100vw; /* Volle Breite der Seite */
+      background-color: #F3E9D4; /* Passende Hintergrundfarbe */
+      border-radius: 0; /* Keine abgerundeten Ecken */
+      overflow: hidden; /* Verhindert, dass Inhalte überlaufen */
+    }
+
+    .titelbild {
+      flex-grow: 1;
+    }
+
+    .titelbild img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Textfelder links und rechts vom Titelbild */
+    .textfeld {
+      flex-basis: 300px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      text-align: center;
+      margin: 10px;
+    }
+
+    .product-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .product {
+      margin-bottom: 40px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    .product img {
+      width: 100%;
+      max-width: 400px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    /* Carousel Styles */
+    .carousel {
+      position: relative;
+      max-width: 400px; /* Smaller size */
+      margin: 30px auto;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .carousel-track img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.3);
+      border: none;
+      color: white;
+      font-size: 30px;
+      padding: 8px 14px;
+      cursor: pointer;
+      z-index: 1;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .carousel-button:hover {
+      background: rgba(0,0,0,0.5);
+    }
+
+    .carousel-button.prev {
+      left: 10px;
+    }
+
+    .carousel-button.next {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeNav()">×</span>
+    <a href="#muetze">Mütze</a>
+    <a href="#tshirt">T-Shirt</a>
+    <a href="#hose">Hose</a>
+    <a href="#schuhe">Schuhe</a>
+    <a href="#schmuck">Schmuck</a>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <h1>MyShop</h1>
+    <div style="display: flex; align-items: center;">
+      <a href="builder.html">
+        <img src="DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+      </a>
+      <a href="warenkorb.html">
+        <img src="Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+      </a>
+    </div>
+  </div>
+
+  <!-- Suche -->
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Suche nach Produkten..." onkeyup="filterProducts()">
+  </div>
+
+  <!-- Titelbild und Textfelder -->
+  <div class="titelbild-wrapper">
+    <div class="textfeld">
+      <h2>MyShop</h2>
+      <p>Unser Shop supportet das individuelle Selbst und nicht was die Gesellschaft von Dir sehen will</p>
+    </div>
+
+    <div class="titelbild">
+      <img src="Titelbild.png" alt="Streetwear Titelbild">
+    </div>
+
+    <div class="textfeld">
+      <h2>Sei du selbst!</h2>
+      <p>Zieh an, was du bist</p>
+    </div>
+  </div>
+
+  <!-- Carousel -->
+  <div class="carousel">
+    <div class="carousel-track">
+      <img src="Outift1.png" alt="Look 1">
+      <img src="Outift1.png" alt="Look 2">
+      <img src="Outift1.png" alt="Look 3">
+    </div>
+    <button class="carousel-button prev" onclick="moveSlide(-1)">‹</button>
+    <button class="carousel-button next" onclick="moveSlide(1)">›</button>
+  </div>
+
+  <!-- Produkte -->
+  <div class="product-container" id="product-list">
+    <div class="product" id="muetze">
+      <h2>Mütze</h2>
+      <a href="produktdetail.html?name=Mütze&image=produkt1.jpg">
+        <img src="Mütze.jpg" alt="Mütze">
+      </a>
+    </div>
+
+    <div class="product" id="tshirt">
+      <h2>T-Shirt</h2>
+      <a href="produktdetail.html?name=T-Shirt&image=produkt2.jpg">
+        <img src="Tshirt.jpg" alt="T-Shirt">
+      </a>
+    </div>
+
+    <div class="product" id="hose">
+      <h2>Hose</h2>
+      <a href="produktdetail.html?name=Hose&image=produkt3.jpg">
+        <img src="Hose.jpg" alt="Hose">
+      </a>
+    </div>
+
+    <div class="product" id="schuhe">
+      <h2>Schuhe</h2>
+      <a href="produktdetail.html?name=Schuhe&image=produkt4.jpg">
+        <img src="Schuhe.jpg" alt="Schuhe">
+      </a>
+    </div>
+
+    <div class="product" id="schmuck">
+      <h2>Schmuck</h2>
+      <a href="produktdetail.html?name=Schmuck&image=produkt5.jpg">
+        <img src="Ringe.jpg" alt="Schmuck">
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+
+    function filterProducts() {
+      let input = document.getElementById("search").value.toLowerCase();
+      let products = document.querySelectorAll(".product");
+
+      products.forEach(product => {
+        let name = product.innerText.toLowerCase();
+        if (name.includes(input)) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    }
+
+    let currentIndex = 0;
+    const track = document.querySelector(".carousel-track");
+    const slides = document.querySelectorAll(".carousel-track img");
+
+    function moveSlide(step) {
+      currentIndex = (currentIndex + step + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    function updateCarousel() {
+      const width = slides[0].clientWidth;
+      track.style.transform = `translateX(-${currentIndex * width}px)`;
+    }
+
+    setInterval(() => {
+      moveSlide(1);
+    }, 3000);
+
+    window.addEventListener("resize", updateCarousel);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
