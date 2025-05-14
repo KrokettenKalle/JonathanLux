@@ -46,14 +46,14 @@
   
   #shoes-zone {
     top: 420px;
-    left: 80px;
+    left: 85px;
     width: 170px;
     height: 130px;
   }
   
   #bracelet-zone {
-    top: 160px;
-    left: 0px;
+    top: 210px;
+    left: 80px;
     width: 60px;
     height: 40px;
   }
@@ -66,9 +66,16 @@
   
   .clothing-options {
     display: flex;
+    flex-direction: row;
+    gap: 30px;
+    flex-wrap: nowrap;
+  }
+  
+  .clothing-column {
+    display: flex;
     flex-direction: column;
     gap: 20px;
-  }
+  }  
   
   .clothing-options img {
     width: 120px;
