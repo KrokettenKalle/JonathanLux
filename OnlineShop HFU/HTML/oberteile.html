@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oberteile – Auswahl</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/category.css">
+</head>
+<body>
+
+
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <h1 onclick="location.href='Online Shop.html'">MyShop</h1>
+    <div style="display: flex; align-items: center;">
+      <a href="builder.html">
+        <img src="../Bilder/DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+      </a>
+      <a href="warenkorb.html">
+        <img src="../Bilder/Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+      </a>
+    </div>
+  </div>
+
+  <!-- Produktübersicht -->
+  <h2>Oberteile</h2>
+  <div class="products">
+    <div class="product" onclick="goToDetail('Tactical Sweater', '../Bilder/Pullover_Produktauswahl.png')">
+      <img src="../Bilder/Pullover_Produktauswahl.png" alt="Tactical Sweater">
+      <h3>Tactical Sweater</h3>
+    </div>
+    <div class="product" onclick="goToDetail('flaming Shirt', '../Bilder/Tshirt_Produktauswahl.png')">
+      <img src="../Bilder/Tshirt_Produktauswahl.png" alt="flaming Shirt">
+      <h3>flaming Shirt</h3>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/category.js"></script>
+</body>
+</html>

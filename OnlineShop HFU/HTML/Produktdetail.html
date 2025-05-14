@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produktdetail</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/detail.css">
+</head>
+<body>
+
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <h1><a href="Online Shop.html" style="text-decoration: none; color: inherit;">MyShop</a></h1>
+    <div style="display: flex; align-items: center;">
+      <a href="builder.html">
+        <img src="../Bilder/DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+      </a>
+      <a href="warenkorb.html">
+        <img src="../Bilder/Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+      </a>
+    </div>
+  </div>
+
+  <!-- Produktdetails -->
+  <div class="product-container">
+    <div class="product">
+      <img src="" alt="Produkt" id="product-image">
+      <div class="product-info">
+        <h2 id="product-name"></h2>
+        <label for="size">Größe wählen:</label>
+        <br>
+        <select id="size">
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+        </select>
+        <br>
+        <button onclick="addToCart()">In den Warenkorb</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../js/common.js"></script>
+  <script src="../js/detail.js"></script>
+</body>
+</html>

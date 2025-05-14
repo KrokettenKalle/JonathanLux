@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hosen – Auswahl</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/category.css">
+</head>
+<body>
+
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <h1 onclick="location.href='Online Shop.html'">MyShop</h1>
+    <div style="display: flex; align-items: center;">
+      <a href="builder.html">
+        <img src="../Bilder/DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+      </a>
+      <a href="warenkorb.html">
+        <img src="../Bilder/Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+      </a>
+    </div>
+  </div>
+
+  <!-- Produktübersicht -->
+  <h2>Hosen</h2>
+  <div class="products">
+    <div class="product" onclick="goToDetail('Cargo Pants', '../Bilder/Cargo Pants.png')">
+      <img src="../Bilder/Cargo Pants.png" alt="Cargo Pants">
+      <h3>Cargo Pants</h3>
+    </div>
+    <div class="product" onclick="goToDetail('Jeans', '../Bilder/Hose_white.png')">
+      <img src="../Bilder/Hose_white.png" alt="Jeans">
+      <h3>Jeans</h3>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/category.js"></script>
+</body>
+</html>

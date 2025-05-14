@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Outfit-Builder</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/builder.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <h1 onclick="location.href='Online Shop.html'">MyShop</h1>
+    <div style="display: flex; align-items: center;">
+      <a href="builder.html">
+        <img src="../Bilder/DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+      </a>
+      <a href="warenkorb.html">
+        <img src="../Bilder/Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+      </a>
+    </div>
+  </div>
+
+  <h2 style="text-align:center; margin-top: 30px;">Outfit-Builder</h2>
+
+  <div class="builder-wrapper">
+    <!-- Kleidungsauswahl -->
+    <div class="clothing-options">
+      <img src="../Bilder/tshirt_3.png" draggable="true" ondragstart="drag(event)" id="tshirt" alt="T-Shirt">
+      <img src="../Bilder/Pullover_1.png" draggable="true" ondragstart="drag(event)" id="tshirt" alt="T-Shirt">
+      <img src="../Bilder/Cargo Pants.png" draggable="true" ondragstart="drag(event)" id="pants" alt="Hose">
+      <img src="../Bilder/Hose_white.png" draggable="true" ondragstart="drag(event)" id="pants" alt="Hose">
+      <img src="../Bilder/Basic Cap.png" draggable="true" ondragstart="drag(event)" id="hat" alt="Mütze">
+      <img src="../Bilder/Tribal Cap.png" draggable="true" ondragstart="drag(event)" id="hat" alt="Mütze">
+      <img src="../Bilder/Schuhe_Adidas.png" draggable="true" ondragstart="drag(event)" id="shoes" alt="Schuhe">
+      <img src="../Bilder/Schuhe_Vans.png" draggable="true" ondragstart="drag(event)" id="shoes" alt="Schuhe">
+      <img src="../Bilder/bracelet.png" draggable="true" ondragstart="drag(event)" id="bracelet" alt="Armband">
+    </div>
+
+    <!-- Puppe -->
+    <div class="mannequin-container">
+      <img src="../Bilder/Mannequin2.png" alt="Puppe">
+      <div class="dropzone" id="hat-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropzone" id="shirt-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropzone" id="pants-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropzone" id="shoes-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropzone" id="bracelet-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="button-wrapper">
+    <button onclick="resetOutfit()">Zurücksetzen</button>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mützen – Auswahl</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/category.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <h1 onclick="location.href='Online Shop.html'">MyShop</h1>
+    <div style="display: flex; align-items: center;">
+      <a href="builder.html">
+        <img src="../Bilder/DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+      </a>
+      <a href="warenkorb.html">
+        <img src="../Bilder/Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+      </a>
+    </div>
+  </div>
+
+  <!-- Produktübersicht -->
+  <h2>Hats</h2>
+  <div class="products">
+    <div class="product" onclick="goToDetail('Basic Cap', '../Bilder/Basic Cap.png')">
+      <img src="../Bilder/Basic Cap.png" alt="Basic Cap">
+      <h3>Basic Cap</h3>
+    </div>
+    <div class="product" onclick="goToDetail('Tribal Cap', '../Bilder/Tribal Cap.png')">
+      <img src="../Bilder/Tribal Cap.png" alt="Tribal Cap">
+      <h3>Tribal Cap</h3>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/category.js"></script>
+</body>
+</html>

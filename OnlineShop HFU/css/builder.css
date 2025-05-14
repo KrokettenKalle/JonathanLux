@@ -1,0 +1,103 @@
+.builder-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+  }
+  
+  .mannequin-container {
+    position: relative;
+    width: 350px;
+  }
+  
+  .mannequin-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .dropzone {
+    position: absolute;
+    z-index: 2;
+    pointer-events: auto;
+  }
+  
+  #hat-zone {
+    top: 0px;
+    left: 130px;
+    width: 100px;
+    height: 70px;
+  }
+  
+  #shirt-zone {
+    top: 110px;
+    left: 90px;
+    width: 160px;
+    height: 140px;
+  }
+  
+  #pants-zone {
+    top: 205px;
+    left: 85px;
+    width: 185px;
+    height: 130px;
+  }
+  
+  #shoes-zone {
+    top: 420px;
+    left: 80px;
+    width: 170px;
+    height: 130px;
+  }
+  
+  #bracelet-zone {
+    top: 160px;
+    left: 0px;
+    width: 60px;
+    height: 40px;
+  }
+  
+  .dropzone img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .clothing-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .clothing-options img {
+    width: 120px;
+    cursor: grab;
+    border: 1px solid #aaa;
+    padding: 4px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .button-wrapper {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .button-wrapper button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    background-color: #c89494;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .button-wrapper button:hover {
+    background-color: #a87171;
+  }
+  

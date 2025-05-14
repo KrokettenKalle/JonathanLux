@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OnlineShop</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+ 
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <h1><a href="Online Shop.html" style="text-decoration: none; color: inherit;">MyShop</a></h1>
+    <div style="display: flex; align-items: center;">
+      <a href="builder.html">
+        <img src="../Bilder/DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+      </a>
+      <a href="warenkorb.html">
+        <img src="../Bilder/Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+      </a>
+    </div>
+  </div>
+
+  <!-- Suche -->
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Suche nach Produkten..." onkeyup="filterProducts()">
+  </div>
+
+  <!-- Titelbild und Textfelder -->
+  <div class="titelbild-wrapper">
+    <div class="textfeld">
+      <h2>MyShop</h2>
+      <p>Unser Shop supportet das individuelle Selbst und nicht was die Gesellschaft von Dir sehen will</p>
+    </div>
+
+    <div class="titelbild">
+      <img src="../Bilder/Titelbild.png" alt="Streetwear Titelbild">
+    </div>
+
+    <div class="textfeld">
+      <h2>Sei du selbst!</h2>
+      <p>Zieh an, was du bist</p>
+    </div>
+  </div>
+
+  <!-- Carousel -->
+  <div class="carousel">
+    <div class="carousel-track">
+      <img src="../Bilder/Outfit1.png" alt="Look 1">
+      <img src="../Bilder/Outfit2.png" alt="Look 2">
+      <img src="../Bilder/Outfit3.png" alt="Look 3">
+      <img src="../Bilder/Outfit4.png" alt="Look 4">
+    </div>
+    <button class="carousel-button prev" onclick="moveSlide(-1)">‹</button>
+    <button class="carousel-button next" onclick="moveSlide(1)">›</button>
+  </div>
+
+  <!-- Produkte -->
+  <div class="product-container" id="product-list">
+    <div class="product" id="muetze">
+      <h2>Hats</h2>
+      <a href="Hats.html">
+        <img src="../Bilder/Allgemeine Hats.png" alt="Mütze">
+      </a>
+    </div>
+
+    <div class="product" id="tshirt">
+      <h2>Oberteile</h2>
+      <a href="Oberteile.html">
+        <img src="../Bilder/Allgemeine Oberteile.png" alt="T-Shirt">
+      </a>
+    </div>
+
+    <div class="product" id="hose">
+      <h2>Hosen</h2>
+      <a href="Hosen.html">
+        <img src="../Bilder/Allgemeine Hosen.png" alt="Hose">
+      </a>
+    </div>
+
+    <div class="product" id="schuhe">
+      <h2>Schuhe</h2>
+      <a href="Schuhe.html">
+        <img src="../Bilder/Allgemeine Schuhe.png" alt="Schuhe">
+      </a>
+    </div>
+
+    <div class="product" id="schmuck">
+      <h2>Schmuck</h2>
+      <a href="Schmuck.html">
+        <img src="../Bilder/Allgemeiner Schmuck.png" alt="Schmuck">
+      </a>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+</body>
+</html>
