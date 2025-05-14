@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produktdetail</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mützen – Auswahl</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -23,16 +23,12 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .menu-icon {
-      font-size: 28px;
-      cursor: pointer;
-    }
-
     .header h1 {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       margin: 0;
+      cursor: pointer;
     }
 
     .cart-icon {
@@ -75,52 +71,41 @@
       cursor: pointer;
     }
 
-    /* Produktbereich */
-    .product-container {
-      max-width: 600px;
-      margin: 40px auto;
-      background-color: #fff;
-      padding: 20px;
+    /* Produktübersicht */
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .products {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .product {
+      width: 250px;
+      background: white;
       border-radius: 12px;
+      padding: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
+      cursor: pointer;
     }
 
     .product img {
       width: 100%;
-      max-width: 300px;
       border-radius: 8px;
     }
 
-    .product-info {
-      margin-top: 20px;
-    }
-
-    select, button {
-      padding: 10px;
-      font-size: 16px;
+    .product h3 {
       margin-top: 10px;
-      width: 80%;
-      max-width: 300px;
-    }
-
-    button {
-      background-color: #c89494;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #a97676;
     }
   </style>
 </head>
 <body>
-
-
-  
 
   <!-- Sidebar -->
   <div id="mySidebar" class="sidebar">
@@ -135,7 +120,7 @@
   <!-- Header -->
   <div class="header">
     <span class="menu-icon" onclick="openNav()">☰</span>
-    <h1><a href="Online Shop.html" style="text-decoration: none; color: inherit;">MyShop</a></h1>
+    <h1 onclick="location.href='Online Shop.html'">MyShop</h1>
     <div style="display: flex; align-items: center;">
       <a href="builder.html">
         <img src="Bilder/DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
@@ -146,29 +131,19 @@
     </div>
   </div>
 
-  <!-- Produktdetails -->
-  <div class="product-container">
-    <div class="product">
-      <img src="" alt="Produkt" id="product-image">
-      <div class="product-info">
-        <h2 id="product-name"></h2>
-        <label for="size">Größe wählen:</label>
-        <br>
-        <select id="size">
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
-        </select>
-        <br>
-        <button onclick="addToCart()">In den Warenkorb</button>
-      </div>
+  <!-- Produktübersicht -->
+  <h2>Schmuck</h2>
+  <div class="products">
+    <div class="product" onclick="goToDetail('Silver Chain', 'Bilder/Chain_silver.png')">
+      <img src="Bilder/Chain_silver.png" alt="Silver Chain">
+      <h3>Silver Chain</h3>
+    </div>
+    <div class="product" onclick="goToDetail('Gold Chain', 'Bilder/chain_gold.png')">
+      <img src="Bilder/chain_gold.png" alt="Gold Chain">
+      <h3>Gold Chain</h3>
     </div>
   </div>
 
-  <!-- Scripts -->
   <script>
     function openNav() {
       document.getElementById("mySidebar").style.width = "250px";
@@ -178,25 +153,12 @@
       document.getElementById("mySidebar").style.width = "0";
     }
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const productName = urlParams.get("name");
-    const productImage = urlParams.get("image");
-
-    if (productName && productImage) {
-      document.getElementById("product-name").innerText = productName;
-      document.getElementById("product-image").src = productImage;
-    }
-
-    function addToCart() {
-      let name = document.getElementById("product-name").innerText;
-      let image = document.getElementById("product-image").src;
-      let size = document.getElementById("size").value;
-
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push({ name, image, size });
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(name + " in Größe " + size + " wurde zum Warenkorb hinzugefügt!");
+    function goToDetail(name, image) {
+      const url = `produktdetail.html?name=${encodeURIComponent(name)}&image=${encodeURIComponent(image)}`;
+      window.location.href = url;
     }
   </script>
+
 </body>
 </html>
+

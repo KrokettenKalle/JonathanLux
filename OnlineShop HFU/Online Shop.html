@@ -200,9 +200,9 @@
   <!-- Sidebar -->
   <div id="mySidebar" class="sidebar">
     <span class="closebtn" onclick="closeNav()">×</span>
-    <a href="#muetze">Mütze</a>
-    <a href="#tshirt">T-Shirt</a>
-    <a href="#hose">Hose</a>
+    <a href="#muetze">Hats</a>
+    <a href="#tshirt">Oberteile</a>
+    <a href="#hose">Hosen</a>
     <a href="#schuhe">Schuhe</a>
     <a href="#schmuck">Schmuck</a>
   </div>
@@ -210,13 +210,13 @@
   <!-- Header -->
   <div class="header">
     <span class="menu-icon" onclick="openNav()">☰</span>
-    <h1>MyShop</h1>
+    <h1><a href="Online Shop.html" style="text-decoration: none; color: inherit;">MyShop</a></h1>
     <div style="display: flex; align-items: center;">
       <a href="builder.html">
-        <img src="DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+        <img src="Bilder/DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
       </a>
       <a href="warenkorb.html">
-        <img src="Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+        <img src="Bilder/Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
       </a>
     </div>
   </div>
@@ -234,7 +234,7 @@
     </div>
 
     <div class="titelbild">
-      <img src="Titelbild.png" alt="Streetwear Titelbild">
+      <img src="Bilder/Titelbild.png" alt="Streetwear Titelbild">
     </div>
 
     <div class="textfeld">
@@ -246,9 +246,10 @@
   <!-- Carousel -->
   <div class="carousel">
     <div class="carousel-track">
-      <img src="Outift1.png" alt="Look 1">
-      <img src="Outift1.png" alt="Look 2">
-      <img src="Outift1.png" alt="Look 3">
+      <img src="Bilder/Outfit1.png" alt="Look 1">
+      <img src="Bilder/Outfit2.png" alt="Look 2">
+      <img src="Bilder/Outfit3.png" alt="Look 3">
+      <img src="Bilder/Outfit4.png" alt="Look 4">
     </div>
     <button class="carousel-button prev" onclick="moveSlide(-1)">‹</button>
     <button class="carousel-button next" onclick="moveSlide(1)">›</button>
@@ -257,37 +258,37 @@
   <!-- Produkte -->
   <div class="product-container" id="product-list">
     <div class="product" id="muetze">
-      <h2>Mütze</h2>
-      <a href="produktdetail.html?name=Mütze&image=produkt1.jpg">
-        <img src="Mütze.jpg" alt="Mütze">
+      <h2>Hats</h2>
+      <a href="Hats.html">
+        <img src="Bilder/Allgemeine Hats.png" alt="Mütze">
       </a>
     </div>
 
     <div class="product" id="tshirt">
-      <h2>T-Shirt</h2>
-      <a href="produktdetail.html?name=T-Shirt&image=produkt2.jpg">
-        <img src="Tshirt.jpg" alt="T-Shirt">
+      <h2>Oberteile</h2>
+      <a href="Oberteile.html">
+        <img src="Bilder/Allgemeine Oberteile.png" alt="T-Shirt">
       </a>
     </div>
 
     <div class="product" id="hose">
-      <h2>Hose</h2>
-      <a href="produktdetail.html?name=Hose&image=produkt3.jpg">
-        <img src="Hose.jpg" alt="Hose">
+      <h2>Hosen</h2>
+      <a href="Hosen.html">
+        <img src="Bilder/Allgemeine Hosen.png" alt="Hose">
       </a>
     </div>
 
     <div class="product" id="schuhe">
       <h2>Schuhe</h2>
-      <a href="produktdetail.html?name=Schuhe&image=produkt4.jpg">
-        <img src="Schuhe.jpg" alt="Schuhe">
+      <a href="Schuhe.html">
+        <img src="Bilder/Allgemeine Schuhe.png" alt="Schuhe">
       </a>
     </div>
 
     <div class="product" id="schmuck">
       <h2>Schmuck</h2>
-      <a href="produktdetail.html?name=Schmuck&image=produkt5.jpg">
-        <img src="Ringe.jpg" alt="Schmuck">
+      <a href="Schmuck.html">
+        <img src="Bilder/Allgemeiner Schmuck.png" alt="Schmuck">
       </a>
     </div>
   </div>
@@ -331,14 +332,12 @@
 
     setInterval(() => {
       moveSlide(1);
-    }, 3000);
+    }, 6000);
 
     window.addEventListener("resize", updateCarousel);
   </script>
 </body>
 </html>
-
-
 
 
 

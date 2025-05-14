@@ -12,7 +12,6 @@
       background-color: #fafafa;
     }
 
-    /* Header */
     .header {
       display: flex;
       align-items: center;
@@ -23,16 +22,12 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .menu-icon {
-      font-size: 28px;
-      cursor: pointer;
-    }
-
     .header h1 {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       margin: 0;
+      cursor: pointer;
     }
 
     .cart-icon {
@@ -40,7 +35,6 @@
       cursor: pointer;
     }
 
-    /* Sidebar */
     .sidebar {
       height: 100%;
       width: 0;
@@ -75,48 +69,70 @@
       cursor: pointer;
     }
 
-    /* Builder Content */
     .builder-wrapper {
       display: flex;
       justify-content: center;
       gap: 40px;
       padding: 40px 20px;
+      flex-wrap: wrap;
     }
 
     .mannequin-container {
       position: relative;
-      width: 300px;
-      height: 600px;
-      background-image: url('angepasste puppe.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      background-color: white;
+      width: 350px;
     }
 
-    .clothing-zone {
+    .mannequin-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .dropzone {
       position: absolute;
-      pointer-events: none;
+      z-index: 2;
+      pointer-events: auto;
+    }
+
+    #hat-zone {
+      top: 0px;
+      left: 130px;
+      width: 100px;
+      height: 70px;
     }
 
     #shirt-zone {
-      top: 120px;
-      width: 100%;
-      height: 150px;
+      top: 110px;
+      left: 90px;
+      width: 160px;
+      height: 140px;
     }
 
     #pants-zone {
-      top: 270px;
-      width: 100%;
-      height: 180px;
+      top: 205px;
+      left: 85px;
+      width: 185px;
+      height: 130px;
     }
 
     #shoes-zone {
-      top: 450px;
+      top: 420px;
+      left: 80px;
+      width: 170px;
+      height: 130px;
+    }
+
+    #bracelet-zone {
+      top: 160px;
+      left: 0px;
+      width: 60px;
+      height: 40px;
+    }
+
+    .dropzone img {
       width: 100%;
-      height: 100px;
+      height: auto;
+      object-fit: contain;
     }
 
     .clothing-options {
@@ -126,13 +142,34 @@
     }
 
     .clothing-options img {
-      width: 100px;
+      width: 120px;
       cursor: grab;
       border: 1px solid #aaa;
       padding: 4px;
       background: white;
       border-radius: 6px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .button-wrapper {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .button-wrapper button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      background-color: #c89494;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .button-wrapper button:hover {
+      background-color: #a87171;
     }
   </style>
 </head>
@@ -141,46 +178,60 @@
   <!-- Sidebar -->
   <div id="mySidebar" class="sidebar">
     <span class="closebtn" onclick="closeNav()">×</span>
-    <a href="index.html#muetze">Mütze</a>
-    <a href="index.html#tshirt">T-Shirt</a>
-    <a href="index.html#hose">Hose</a>
-    <a href="index.html#schuhe">Schuhe</a>
-    <a href="index.html#schmuck">Schmuck</a>
+    <a href="Online Shop.html#muetze">Hats</a>
+    <a href="Online Shop.html#tshirt">Oberteile</a>
+    <a href="Online Shop.html#hose">Hosen</a>
+    <a href="Online Shop.html#schuhe">Schuhe</a>
+    <a href="Online Shop.html#schmuck">Schmuck</a>
   </div>
 
   <!-- Header -->
   <div class="header">
     <span class="menu-icon" onclick="openNav()">☰</span>
-    <h1>MyShop</h1>
+    <h1 onclick="location.href='Online Shop.html'">MyShop</h1>
     <div style="display: flex; align-items: center;">
       <a href="builder.html">
-        <img src="DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
+        <img src="Bilder/DragDrop.avif" alt="Builder" width="40" class="cart-icon" title="Outfit-Builder">
       </a>
       <a href="warenkorb.html">
-        <img src="Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
+        <img src="Bilder/Warenkorb.jpg" alt="Warenkorb" width="40" class="cart-icon">
       </a>
     </div>
   </div>
 
-  <!-- Builder Content -->
   <h2 style="text-align:center; margin-top: 30px;">Outfit-Builder</h2>
+
   <div class="builder-wrapper">
     <!-- Kleidungsauswahl -->
     <div class="clothing-options">
-      <img src="angepasstes Tshirt.png" draggable="true" ondragstart="drag(event)" id="tshirt" alt="T-Shirt">
-      <img src="angepasste hose.png" draggable="true" ondragstart="drag(event)" id="pants" alt="Hose">
-      <img src="angepasste schuhe.png" draggable="true" ondragstart="drag(event)" id="shoes" alt="Schuhe">
+      <img src="Bilder/tshirt_3.png" draggable="true" ondragstart="drag(event)" id="tshirt" alt="T-Shirt">
+      <img src="Bilder/Pullover_1.png" draggable="true" ondragstart="drag(event)" id="tshirt" alt="T-Shirt">
+      <img src="Bilder/Cargo Pants.png" draggable="true" ondragstart="drag(event)" id="pants" alt="Hose">
+      <img src="Bilder/Hose_white.png" draggable="true" ondragstart="drag(event)" id="pants" alt="Hose">
+      <img src="Bilder/Basic Cap.png" draggable="true" ondragstart="drag(event)" id="hat" alt="Mütze">
+      <img src="Bilder/Tribal Cap.png" draggable="true" ondragstart="drag(event)" id="hat" alt="Mütze">
+      <img src="Bilder/Schuhe_Adidas.png" draggable="true" ondragstart="drag(event)" id="shoes" alt="Schuhe">
+      <img src="Bilder/Schuhe_Vans.png" draggable="true" ondragstart="drag(event)" id="shoes" alt="Schuhe">
+      <img src="Bilder/.png" draggable="true" ondragstart="drag(event)" id="bracelet" alt="Armband">
+      <img src="Bilder/bracelet.png" draggable="true" ondragstart="drag(event)" id="bracelet" alt="Armband">
     </div>
 
-    <!-- Puppe mit Dropzonen -->
+    <!-- Puppe -->
     <div class="mannequin-container">
-      <div class="clothing-zone" id="shirt-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div class="clothing-zone" id="pants-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div class="clothing-zone" id="shoes-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <img src="Bilder/Mannequin2.png" alt="Puppe">
+      <div class="dropzone" id="hat-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropzone" id="shirt-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropzone" id="pants-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropzone" id="shoes-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropzone" id="bracelet-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Buttons -->
+  <div class="button-wrapper">
+    <button onclick="resetOutfit()">Zurücksetzen</button>
+  </div>
+
   <script>
     function openNav() {
       document.getElementById("mySidebar").style.width = "250px";
@@ -195,29 +246,61 @@
     }
 
     function drag(ev) {
-      ev.dataTransfer.setData("type", ev.target.id);
       ev.dataTransfer.setData("src", ev.target.src);
+      ev.dataTransfer.setData("type", ev.target.id);
     }
 
     function drop(ev) {
       ev.preventDefault();
-      const type = ev.dataTransfer.getData("type");
       const src = ev.dataTransfer.getData("src");
+      const type = ev.dataTransfer.getData("type");
 
-      let zoneId = "";
-      if (type === "tshirt") zoneId = "shirt-zone";
-      else if (type === "pants") zoneId = "pants-zone";
-      else if (type === "shoes") zoneId = "shoes-zone";
+      const zoneMap = {
+        tshirt: "shirt-zone",
+        pants: "pants-zone",
+        hat: "hat-zone",
+        shoes: "shoes-zone",
+        bracelet: "bracelet-zone"
+      };
 
+      const zoneId = zoneMap[type];
       if (zoneId) {
         const zone = document.getElementById(zoneId);
-        zone.innerHTML = `<img src="${src}" style="width: 80%; position: absolute; top: 0; left: 10%;">`;
+        zone.innerHTML = `<img src="${src}" alt="${type}">`;
+        saveOutfit();
       }
     }
+
+    function saveOutfit() {
+      const outfit = {
+        shirt: document.getElementById("shirt-zone").innerHTML,
+        pants: document.getElementById("pants-zone").innerHTML,
+        hat: document.getElementById("hat-zone").innerHTML,
+        shoes: document.getElementById("shoes-zone").innerHTML,
+        bracelet: document.getElementById("bracelet-zone").innerHTML
+      };
+      localStorage.setItem("outfit", JSON.stringify(outfit));
+    }
+
+    function loadOutfit() {
+      const data = JSON.parse(localStorage.getItem("outfit"));
+      if (data) {
+        document.getElementById("shirt-zone").innerHTML = data.shirt || "";
+        document.getElementById("pants-zone").innerHTML = data.pants || "";
+        document.getElementById("hat-zone").innerHTML = data.hat || "";
+        document.getElementById("shoes-zone").innerHTML = data.shoes || "";
+        document.getElementById("bracelet-zone").innerHTML = data.bracelet || "";
+      }
+    }
+
+    function resetOutfit() {
+      const zones = ["shirt-zone", "pants-zone", "hat-zone", "shoes-zone", "bracelet-zone"];
+      zones.forEach(id => document.getElementById(id).innerHTML = "");
+      localStorage.removeItem("outfit");
+    }
+
+    window.onload = loadOutfit;
   </script>
 </body>
 </html>
-
-
-
 
